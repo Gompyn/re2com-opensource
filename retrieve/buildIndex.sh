@@ -4,4 +4,4 @@ mkdir standard-corpus
 java -cp $CLASSPATH IndexBuilder ../data/standard/train/train.token.retrieval standard-corpus
 
 mkdir challenge-corpus
-java -cp $CLASSPATH Hello ../data/challenge/train/train.token.retrieval challenge-corpus
+java -cp $CLASSPATH IndexBuilder ../data/challenge/train/train.token.retrieval challenge-corpus
