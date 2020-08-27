@@ -23,12 +23,12 @@ def main():
 	assert path.exists(path.join(args.output, 'train', 'train.token.nl'))
 
 	nls = [line.strip() for line in open(path.join(args.output, 'train', 'train.token.nl'))]
-	for exemplar, tgt in [(path.join(args.exemplars, from_+'.exemplar'), path.join(args.output, to_+'.token.nl')) for from_, to_ in [('train', 'train/train'), ('val', 'val/test'), ('test', 'test/test')]]
+	for exemplar, tgt in [(path.join(args.exemplars, from_+'.exemplar'), path.join(args.output, to_+'.token.exemplar')) for from_, to_ in [('train', 'train/train'), ('val', 'val/test'), ('test', 'test/test')]]:
 		proj_exemplar(exemplar, nls, tgt)
 	del nls
 
 	codes = [line.strip() for line in open(path.join(args.output, 'train', 'train.token.code'))]
-	for exemplar, tgt in [(path.join(args.exemplars, from_+'.exemplar_code'), path.join(args.output, to_+'.token.code')) for from_, to_ in [('train', 'train/train'), ('val', 'val/test'), ('test', 'test/test')]]
+	for exemplar, tgt in [(path.join(args.exemplars, from_+'.exemplar'), path.join(args.output, to_+'.token.exemplar_code')) for from_, to_ in [('train', 'train/train'), ('val', 'val/test'), ('test', 'test/test')]]:
 		proj_exemplar(exemplar, codes, tgt)
 	del codes
 
