@@ -41,10 +41,11 @@ Our code is based on
     cd challenge
     python __main__.py challenge.yaml --train -v
 ```
-- Test a model with standard dataset as corpus
+- Retrieve code with standard dataset as corpus
+  - Note that the output file will only contain numbers, which are the line numbers of the retrieved code.
 ```
     cd retrieve
-    ./search.sh standard-corpus ${input} 
+    ./search.sh standard-corpus ${input-file} ${output-file}
 ```
 
 ### Evaluation
