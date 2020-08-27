@@ -6,11 +6,15 @@ from os import path
 def proj_exemplar(exemplar: str, src, tgt: str):
 	with open(exemplar) as indices, open(tgt, 'w') as tgt:
 		for index in indices:
-			index = int(index.strip())
+			index = index.strip()
+			if index == '':
+				print('', file=tgt)
+			else:
+				index = int(index)
 			print(src[index], file=tgt)
 
 def main():
-	parser = argparse.ArgumentParser(formatter=argparse.ArgumentDefaultsHelpFormatter)
+	parser = argparse.ArgumentParser(formatter_class=argparse.ArgumentDefaultsHelpFormatter)
 	parser.add_argument('--exemplars', type=str, help='path to directory of exemplars')
 	parser.add_argument('--output', type=str, help='path to output directory')
 	args = parser.parse_args()
