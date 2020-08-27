@@ -11,7 +11,7 @@ def proj_exemplar(exemplar: str, src, tgt: str):
 				print('', file=tgt)
 			else:
 				index = int(index)
-			print(src[index], file=tgt)
+				print(src[index], file=tgt)
 
 def main():
 	parser = argparse.ArgumentParser(formatter_class=argparse.ArgumentDefaultsHelpFormatter)
