@@ -30,11 +30,6 @@ def main():
 		return os.path.join(root, 'vocab.'+ext)
 	def symlink(to, name):
 		os.symlink(os.path.abspath(to), name)
-	def add_counter(from_, to_):
-		with open(from_) as f:
-			with open(to_, 'w') as t:
-				for i, line in enumerate(f):
-					print(i, line.strip(), file=t)
 
 	# standard
 	# rename
@@ -66,8 +61,6 @@ def main():
 				print(word, file=f)
 	symlink(get_vocab('nl'), get_vocab('exemplar'))
 	symlink(get_vocab('code'), get_vocab('exemplar_code'))
-	# add counter for retrieval
-	add_counter(new_path('code', 'train', root=standard), new_path('retrieval', 'train', root=standard))
 
 	# challenge
 	ext_conv2 = {'ast': 'code', 'nl': 'nl'}
@@ -81,8 +74,6 @@ def main():
 		           get_vocab(new_ext, root=challenge))
 	symlink(get_vocab('nl', root=challenge), get_vocab('exemplar', root=challenge))
 	symlink(get_vocab('code', root=challenge), get_vocab('exemplar_code', root=challenge))
-	# add counter for retrieval
-	add_counter(new_path('code', 'train', root=challenge), new_path('retrieval', 'train', root=challenge))
 
 if __name__ == '__main__':
 	main()
