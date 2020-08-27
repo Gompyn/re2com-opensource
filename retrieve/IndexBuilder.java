@@ -76,5 +76,6 @@ public class IndexBuilder {
             d.add(new StoredField("No", i));
             w.addDocument(d);
         }
+        w.commit();
     }
 }
