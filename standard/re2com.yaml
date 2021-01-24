@@ -23,23 +23,23 @@ moving_average: null     # TODO
 
 # dropout
 pervasive_dropout: False  # same dropout mask for all elements in same batch/same sequence (see Gal, 2015)
-rnn_input_dropout: 0.0
-rnn_output_dropout: 0.0
+rnn_input_dropout: 0.2
+rnn_output_dropout: 0.2
 rnn_state_dropout: 0.0
 initial_state_dropout: 0.0
-word_dropout: 0.0
+word_dropout: 0.2
 input_layer_dropout: 0.0
-output_dropout: 0.0      # TODO
-use_dropout: False
+output_dropout: 0.2      # TODO
+use_dropout: True
 layer_norm: False
 
 # initialization parameters
-#weight_scale: null       # if null, initialize weights to TF defaults, otherwise to normal distribution with this stdev
-#initializer: null        # if 'uniform' initialize uniformly between [-weight_scale, +weight_scale] instead
-#orthogonal_init: False   # initialize recurrent connections with an orthogonal matrix
+weight_scale: null       # if null, initialize weights to TF defaults, otherwise to normal distribution with this stdev
+initializer: null        # if 'uniform' initialize uniformly between [-weight_scale, +weight_scale] instead
+orthogonal_init: False   # initialize recurrent connections with an orthogonal matrix
 
 # batch iteration parameters
-batch_size: 2 #56         # batch size (during training and greedy decoding)
+batch_size: 256         # batch size (during training and greedy decoding)
 batch_mode: random      # standard (cycle through train set) or random (sample from train set)
 shuffle: True           # shuffle dataset at each new epoch
 read_ahead: 1           # number of batches to read ahead and sort by sequence length (can speed up training)
