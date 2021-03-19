@@ -7,7 +7,7 @@ def proj_exemplar(exemplar: str, src, tgt: str):
 	with open(exemplar) as indices, open(tgt, 'w') as tgt:
 		for index in indices:
 			index = index.strip()
-			if index == '':
+			if index == '' or index == 'xxx':
 				print('', file=tgt)
 			else:
 				index = int(index)

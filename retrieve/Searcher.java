@@ -68,19 +68,21 @@ public class Searcher {
     private static Integer searching(String source, String res_exemplar, IndexSearcher searcher, QueryParser parser) throws Exception {
         BufferedReader test_code = new BufferedReader(new FileReader(source));
         PrintWriter exemplar_res = new PrintWriter(res_exemplar, "UTF-8");
-        exemplar_res.print(test_code.lines().parallel().map(x -> {
+        String x;
+        while ((x = test_code.readLine()) != null) {
             try {
                 String escaped = escape(x.trim());
                 ScoreDoc[] D = searcher.search(parser.parse(escaped), 2).scoreDocs;
                 Document d0 = searcher.doc(D[0].doc);
                 if (!escaped.equals(d0.get("code"))) {
-                    return d0.get("No");
-                }
-                return searcher.doc(D[1].doc).get("No");
+                    exemplar_res.println(d0.get("No"));
+                } else {
+                    exemplar_res.println(searcher.doc(D[1].doc).get("No"));
+		        }
             } catch (Exception e) {
-                return "";
+                exemplar_res.println("xxx");
             }
-        }).collect(Collectors.joining("\n")));
+        }
         exemplar_res.close();
         return 1;
     }
