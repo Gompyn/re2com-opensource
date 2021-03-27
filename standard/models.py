@@ -504,7 +504,7 @@ def multi_attention(state, hidden_states, encoders, encoder_input_length, pos=No
     sim_score = tf.tile(tf.expand_dims(sim_score, axis=1), [1, batch_size//score_shape, 1])
     sim_score = tf.reshape(sim_score, tf.stack([batch_size, 1]))
 
-    attn_fused = dense(tf.concat([attn_code, attn_ast], axis=1), 2*encoder.cell_size, activation=None, name='fuse1', use_bias=False)
+    attn_fused = dense(tf.concat([attn_code, attn_ast], axis=1), 2*encoder.cell_size, activation=None, name='fuse', use_bias=False)
 
     context_vector = attn_code * (1 - sim_score) + attn_exemplar * sim_score
 
